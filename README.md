@@ -35,14 +35,14 @@ Your support helps keep this project alive and enables new features!
 ## �🚀 Quick Start
 
 ### Option 1: Download Pre-built Executable
-1. Go to [Releases](https://github.com/your-repo/soko-mushi/releases)
+1. Go to [Releases](https://github.com/seijaku-code/soko-mushi/releases)
 2. Download the executable for your platform
 3. Run the application directly (no installation required)
 
 ### Option 2: Run from Source
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/soko-mushi.git
+git clone https://github.com/seijaku-code/soko-mushi.git
 cd soko-mushi
 
 # Install dependencies
@@ -61,7 +61,7 @@ python src/soko_mushi/main.py
 ### Development Setup
 ```bash
 # Clone and setup
-git clone https://github.com/your-repo/soko-mushi.git
+git clone https://github.com/seijaku-code/soko-mushi.git
 cd soko-mushi
 
 # Create virtual environment (recommended)

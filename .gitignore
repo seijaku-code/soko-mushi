@@ -175,3 +175,8 @@ assets/temp/
 logs/
 *.log
 test_data/
+
+# Setup and deployment scripts (local use only)
+setup_github.bat
+setup_github.sh
+DEPLOYMENT_CHECKLIST.md

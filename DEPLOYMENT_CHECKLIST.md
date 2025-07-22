@@ -31,7 +31,7 @@ git init
 git add .
 git commit -m "Initial commit: Soko-Mushi disk analysis tool"
 git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/soko-mushi.git
+git remote add origin https://github.com/seijaku-code/soko-mushi.git
 git push -u origin main
 ```
 
@@ -64,9 +64,9 @@ git push -u origin main
 
 ### 📝 README.md Updates Needed
 Replace these placeholders in README.md:
-- `https://github.com/your-repo/soko-mushi` → Your actual GitHub URL
-- Add actual screenshot to `assets/screenshot.png`
-- Update download links when you create releases
+- ✅ `https://github.com/your-repo/soko-mushi` → Updated to seijaku-code
+- [ ] Add actual screenshot to `assets/screenshot.png`
+- [ ] Update download links when you create releases
 
 ### 🚀 First Release Preparation
 1. Build executables for Windows, Mac, Linux
