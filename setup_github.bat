@@ -14,7 +14,7 @@ git commit -m "Initial commit: Soko-Mushi disk analysis tool"
 REM Add remote repository (replace with your actual GitHub repo URL)
 echo.
 echo Please replace YOUR_USERNAME with your GitHub username in the next command:
-echo git remote add origin https://github.com/YOUR_USERNAME/soko-mushi.git
+echo git remote add origin https://github.com/seijaku-code/soko-mushi.git
 echo.
 echo Then run:
 echo git branch -M main
