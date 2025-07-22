@@ -190,7 +190,8 @@ Soko-Mushi supports multiple visual themes:
 #### GUI Appears Blank or Corrupted
 - Update your graphics drivers
 - Try different themes (System/Light/Dark)
-- Ensure you have tkinter installed
+- Ensure you have PyQt6 properly installed: `pip install PyQt6`
+- On Linux, install Qt6 system packages if needed
 
 #### Executable Won't Start
 - Check that all dependencies are included in the build
@@ -221,18 +222,7 @@ mypy src/
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 💼 Enterprise Edition
-
-Need more features? Check out **Soko-Mushi Pro**:
-- Remote/network scanning
-- Centralized dashboard
-- Historical tracking and trends
-- Advanced export formats
-- Priority support
-
-Contact us at enterprise@soko-mushi.com
-
-## 🙏 Acknowledgments
+##  Acknowledgments
 
 - Built with [PyQt6](https://www.riverbankcomputing.com/software/pyqt/) for modern GUI
 - Compiled with [Nuitka](https://nuitka.net/) for performance
