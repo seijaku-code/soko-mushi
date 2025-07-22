@@ -99,17 +99,17 @@ python build.py
 
 #### Windows
 ```bash
-python -m nuitka --standalone --onefile --enable-plugin=tk-inter --disable-console --output-filename=soko-mushi.exe src/soko_mushi/main.py
+python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --disable-console --output-filename=soko-mushi.exe src/soko_mushi/main.py
 ```
 
 #### macOS
 ```bash
-python -m nuitka --standalone --onefile --enable-plugin=tk-inter --output-filename=soko-mushi src/soko_mushi/main.py
+python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --output-filename=soko-mushi src/soko_mushi/main.py
 ```
 
 #### Linux
 ```bash
-python -m nuitka --standalone --onefile --enable-plugin=tk-inter --output-filename=soko-mushi src/soko_mushi/main.py
+python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --output-filename=soko-mushi src/soko_mushi/main.py
 ```
 
 ## 📊 Usage
