@@ -1,18 +1,30 @@
-# GUI Framework
-PyQt6>=6.6.0
-PyQt6-Qt6>=6.6.0
-
-# File system operations
-psutil>=5.9.0
-pathlib>=1.0.1
-
-# Data processing
-pandas>=2.0.0
-
-# Compilation
-nuitka>=1.8.0
-
-# Development
-pytest>=7.4.0
-black>=23.0.0
-mypy>=1.5.0
+black==25.1.0
+click==8.2.1
+customtkinter==5.2.2
+darkdetect==0.8.0
+iniconfig==2.1.0
+mypy==1.17.0
+mypy_extensions==1.1.0
+Nuitka==2.7.12
+numpy==2.3.1
+ordered-set==4.1.0
+packaging==25.0
+pandas==2.3.1
+pathlib==1.0.1
+pathspec==0.12.1
+pillow==11.3.0
+platformdirs==4.3.8
+pluggy==1.6.0
+psutil==7.0.0
+Pygments==2.19.2
+PyQt6==6.9.1
+PyQt6-Qt6==6.9.1
+PyQt6_sip==13.10.2
+pytest==8.4.1
+python-dateutil==2.9.0.post0
+pytz==2025.2
+six==1.17.0
+soko-mushi==1.0.0
+typing_extensions==4.14.1
+tzdata==2025.2
+zstandard==0.23.0

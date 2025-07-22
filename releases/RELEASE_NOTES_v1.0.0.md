@@ -15,9 +15,11 @@ Welcome to the first release of Soko-Mushi - a powerful, cross-platform disk ana
 - **Modern GUI**: Built with PyQt6 for a responsive, native look and feel
 - **Drive Statistics**: Real-time display of disk usage information
 
+
 ### 📦 Downloads
 
 - **Windows**: `soko-mushi-v1.0.0-windows-x64.exe` (Standalone executable, no installation required)
+- **Linux**: `soko-mushi-v1.0.0-linux-x64` (Standalone executable, no installation required)
 - **Source Code**: Available on GitHub for building on other platforms
 
 ### 🚀 Getting Started
@@ -48,8 +50,9 @@ Special thanks to:
 ---
 
 **File Information:**
+
 - Version: 1.0.0
 - Build Date: January 2025
-- Platform: Windows x64
-- File Size: ~24MB
-- Requirements: Windows 10/11 (no additional dependencies)
+- Platforms:
+  - **Windows x64**: ~24MB, Windows 10/11 (no additional dependencies)
+  - **Linux x64**: ~22MB, tested on Ubuntu 22.04+ and recent distributions (no additional dependencies)
