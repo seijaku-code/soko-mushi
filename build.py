@@ -33,7 +33,7 @@ def build_executable():
         '--disable-console' if platform == 'windows' else '--enable-console',
         '--output-filename=soko-mushi' + exe_extension,
         '--output-dir=dist',
-        '--include-data-dir=src/soko_mushi=soko_mushi',
+#        '--include-data-dir=src/soko_mushi=soko_mushi',
         '--product-name=Soko-Mushi',
         '--product-version=1.0.0',
         '--file-description=Local Disk Analysis Tool',
