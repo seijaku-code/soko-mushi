@@ -180,3 +180,6 @@ test_data/
 setup_github.bat
 setup_github.sh
 DEPLOYMENT_CHECKLIST.md
+
+# Development environment configs (local use only)
+.github/
