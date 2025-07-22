@@ -1,0 +1,18 @@
+# GUI Framework
+PyQt6>=6.6.0
+PyQt6-Qt6>=6.6.0
+
+# File system operations
+psutil>=5.9.0
+pathlib>=1.0.1
+
+# Data processing
+pandas>=2.0.0
+
+# Compilation
+nuitka>=1.8.0
+
+# Development
+pytest>=7.4.0
+black>=23.0.0
+mypy>=1.5.0
