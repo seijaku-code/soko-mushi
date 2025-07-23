@@ -44,7 +44,7 @@ To run the app:
 1. Open Terminal.
 2. Run the following command (replace the path if needed):
    ```sh
-   xattr -dr com.apple.quarantine /Applications/Soko-Mushi.app
+   xattr -dr com.apple.quarantine ~/Downloads/soko-mushi-v1.0.1-mac.dmg
    ```
 3. You can now open the app normally.
 
