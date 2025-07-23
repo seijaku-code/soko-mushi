@@ -35,7 +35,7 @@ Your support helps keep this project alive and enables new features!
 2. Download the executable for your platform
 3. Run the application directly (no installation required)
 
-## ⚠️ macOS Gatekeeper & Unsigned App Note
+### ⚠️ macOS Gatekeeper & Unsigned App Note
 
 Soko-Mushi is a free and open source tool. Apple requires a paid Developer ID to sign and notarize macOS apps. This means the app is unsigned, and you may see a warning like "Soko-Mushi.app is damaged and can't be opened" or "cannot be opened because it is from an unidentified developer."
 
