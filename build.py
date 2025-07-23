@@ -29,7 +29,7 @@ def build_executable():
         sys.executable, '-m', 'nuitka',
         '--standalone',
         '--onefile',
-        '--enable-plugin=pyqt6',
+        '--enable-plugin=pyside6',
         '--disable-console' if platform == 'windows' else '--enable-console',
         '--output-filename=soko-mushi' + exe_extension,
         '--output-dir=dist',
@@ -37,14 +37,14 @@ def build_executable():
         '--product-name=Soko-Mushi',
         '--product-version=1.0.0',
         '--file-description=Local Disk Analysis Tool',
-        '--copyright=Soko-Mushi Team',
+        '--copyright=Seijaku',
         'src/soko_mushi/main.py'
     ]
     
     # Add Windows-specific options
     if platform == 'windows':
         cmd.extend([
-            '--windows-disable-console',
+            '--windows-console-mode=disable',
             '--windows-icon-from-ico=assets/icon.ico' if Path('assets/icon.ico').exists() else ''
         ])
     

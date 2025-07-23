@@ -8,6 +8,9 @@ import os
 from pathlib import Path
 from typing import Optional
 
+if sys.platform.startswith("linux"):
+    os.environ["QT_QPA_PLATFORM"] = "xcb"
+
 # Add src to path for development
 src_path = Path(__file__).parent.parent.parent / "src"
 if src_path.exists():
