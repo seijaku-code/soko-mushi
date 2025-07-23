@@ -51,7 +51,7 @@ def build_executable():
         cmd.extend([
             '--static-libpython=no',
             '--mode=app',
-            '--macos-app-icon=../assets/icon.icns' if Path('assets/icon.icns').exists() else ''
+            '--macos-app-icon=../assets/icon.icns' if Path('../assets/icon.icns').exists() else ''
         ])
 
     # Remove empty arguments
