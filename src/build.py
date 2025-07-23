@@ -77,11 +77,38 @@ def build_executable():
             # Nuitka --mode=app creates a .app bundle
             app_bundle = Path('dist') / 'main.app'
             target_bundle = Path('dist') / 'soko-mushi.app'
+            icon_src = Path('../assets/icon.icns')
             if app_bundle.exists():
                 if target_bundle.exists():
                     shutil.rmtree(target_bundle)
                 app_bundle.rename(target_bundle)
                 print(f"Renamed app bundle to: {target_bundle.absolute()}")
+
+                # Ensure icon.icns is in Resources
+                resources_dir = target_bundle / 'Contents' / 'Resources'
+                if icon_src.exists():
+                    resources_dir.mkdir(parents=True, exist_ok=True)
+                    icon_dst = resources_dir / 'icon.icns'
+                    shutil.copy(icon_src, icon_dst)
+                    print(f"Copied icon.icns to: {icon_dst}")
+
+                # Update Info.plist to reference icon.icns
+                plist_path = target_bundle / 'Contents' / 'Info.plist'
+                if plist_path.exists():
+                    with open(plist_path, 'r', encoding='utf-8') as f:
+                        plist_data = f.read()
+                    import re
+                    # Replace or add CFBundleIconFile
+                    if '<key>CFBundleIconFile</key>' in plist_data:
+                        plist_data = re.sub(r'<key>CFBundleIconFile</key>\s*<string>.*?</string>', '<key>CFBundleIconFile</key>\n    <string>icon.icns</string>', plist_data)
+                    else:
+                        # Insert before </dict>
+                        plist_data = plist_data.replace('</dict>', '    <key>CFBundleIconFile</key>\n    <string>icon.icns</string>\n</dict>')
+                    with open(plist_path, 'w', encoding='utf-8') as f:
+                        f.write(plist_data)
+                    print(f"Updated Info.plist to reference icon.icns")
+                else:
+                    print("Info.plist not found in app bundle!")
             else:
                 print("\u274C .app bundle or executable not found in expected location")
         else:
