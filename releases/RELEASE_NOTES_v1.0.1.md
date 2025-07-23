@@ -36,6 +36,19 @@ This update brings improved cross-platform compatibility and a more robust build
 - Some antivirus software may flag the executable (false positive)
 - On macOS, unsigned builds require right-click > Open to bypass Gatekeeper
 
+### ⚠️ macOS Gatekeeper Note
+
+If you see a "damaged" or "corrupt" warning when opening the app on macOS, this is due to Apple's Gatekeeper quarantine for unsigned apps. To resolve:
+
+1. Open Terminal.
+2. Run the following command (replace the path if needed):
+   ```sh
+   xattr -dr com.apple.quarantine /Applications/Soko-Mushi.app
+   ```
+3. You can now open the app normally.
+
+Alternatively, right-click the app and choose "Open" to bypass the warning for unsigned apps.
+
 ### 🔗 Links
 
 - **GitHub Repository**: https://github.com/seijaku-code/soko-mushi
