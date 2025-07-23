@@ -76,11 +76,12 @@ def build_executable():
         if platform == 'macos':
             # Nuitka --mode=app creates a .app bundle
             app_bundle = Path('dist') / 'main.app'
-            binary_path = app_bundle / 'Contents' / 'MacOS' / 'soko-mushi'
-            if app_bundle.exists() and binary_path.exists():
-                print(f"\U0001F4E6 .app bundle created: {app_bundle.absolute()}")
-                print(f"\U0001F4E6 Executable inside bundle: {binary_path.absolute()}")
-                print(f"\U0001F4CF File size: {binary_path.stat().st_size / 1024 / 1024:.1f} MB")
+            target_bundle = Path('dist') / 'soko-mushi.app'
+            if app_bundle.exists():
+                if target_bundle.exists():
+                    shutil.rmtree(target_bundle)
+                app_bundle.rename(target_bundle)
+                print(f"Renamed app bundle to: {target_bundle.absolute()}")
             else:
                 print("\u274C .app bundle or executable not found in expected location")
         else:
