@@ -1,27 +1,27 @@
 """
-Toolbar component for Soko-Mushi application using PyQt6.
+Toolbar component for Soko-Mushi application using PySide6.
 """
 
-from PyQt6.QtWidgets import QWidget, QHBoxLayout, QPushButton, QLabel, QComboBox, QFrame
-from PyQt6.QtCore import pyqtSignal, Qt
+
+from PySide6.QtWidgets import QWidget, QHBoxLayout, QPushButton, QLabel, QComboBox, QFrame
+from PySide6.QtCore import Signal, Qt
+
 
 
 class ToolbarWidget(QWidget):
     """Toolbar with scan and export buttons."""
-    
-    scan_requested = pyqtSignal()
-    export_requested = pyqtSignal()
-    theme_changed = pyqtSignal(str)
-    
+
+    scan_requested = Signal()
+    export_requested = Signal()
+    theme_changed = Signal(str)
+
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.setFixedHeight(45)  # Ensure toolbar height is fixed
         self.current_theme = "System"
         self._setup_ui()
-        
+
     def _setup_ui(self):
-        """Setup toolbar UI."""
-        # Set fixed height for toolbar
-        self.setFixedHeight(45)
         
         layout = QHBoxLayout(self)
         layout.setContentsMargins(10, 6, 10, 6)

@@ -1,20 +1,22 @@
+
 """
-Main window for Soko-Mushi application using PyQt6.
+Main window for Soko-Mushi application using PySide6.
 """
+
 
 import sys
 import shutil
 from typing import Optional
 from pathlib import Path
 
-from PyQt6.QtWidgets import (
+from PySide6.QtWidgets import (
     QApplication, QMainWindow, QWidget, QVBoxLayout, QHBoxLayout,
     QSplitter, QStatusBar, QProgressBar, QFileDialog, QMessageBox,
     QDialog, QDialogButtonBox, QRadioButton, QVBoxLayout as QVBox,
     QLabel, QButtonGroup
 )
-from PyQt6.QtCore import Qt, QThread, pyqtSignal, QTimer
-from PyQt6.QtGui import QAction, QIcon
+from PySide6.QtCore import Qt, QThread, Signal, QTimer
+from PySide6.QtGui import QAction, QIcon
 
 from ..core import DiskAnalyzer, FileInfo, ReportExporter
 from .tree_view import TreeViewWidget
@@ -22,18 +24,19 @@ from .stats_panel import StatsWidget
 from .toolbar import ToolbarWidget
 
 
+
 class ScanThread(QThread):
     """Thread for disk scanning operations."""
-    
-    progress_updated = pyqtSignal(int, str)
-    scan_completed = pyqtSignal(object)  # FileInfo object
-    scan_error = pyqtSignal(str)
-    
+
+    progress_updated = Signal(int, str)
+    scan_completed = Signal(object)  # FileInfo object
+    scan_error = Signal(str)
+
     def __init__(self, root_path: str):
         super().__init__()
         self.root_path = root_path
         self.analyzer = DiskAnalyzer()
-        
+
     def run(self):
         """Run the disk scan in background thread."""
         try:
@@ -45,7 +48,7 @@ class ScanThread(QThread):
             )
         except Exception as e:
             self.scan_error.emit(str(e))
-            
+
     def stop_scan(self):
         """Stop the current scan."""
         self.analyzer.stop_scan()

@@ -1,5 +1,6 @@
+
 """
-Tree view component for displaying file hierarchy using PyQt6.
+Tree view component for displaying file hierarchy using PySide6.
 """
 
 import subprocess
@@ -8,12 +9,13 @@ import shutil
 from typing import Optional, Dict
 from pathlib import Path
 
-from PyQt6.QtWidgets import (
+
+from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QTreeWidget, QTreeWidgetItem,
     QHeaderView, QMenu, QMessageBox
 )
-from PyQt6.QtCore import Qt, pyqtSignal
-from PyQt6.QtGui import QAction
+from PySide6.QtCore import Qt, Signal
+from PySide6.QtGui import QAction
 
 # Import for cross-platform recycle bin functionality
 try:
@@ -22,36 +24,32 @@ try:
 except ImportError:
     HAS_SEND2TRASH = False
 
+
 from ..core import FileInfo, DiskAnalyzer
 
 
 class NumericTreeWidgetItem(QTreeWidgetItem):
     """QTreeWidgetItem with proper numeric sorting support."""
-    
+
     def __lt__(self, other):
-        """Custom comparison for sorting."""
         column = self.treeWidget().sortColumn()
-        
-        # For Size column (1) and Items column (2), use numeric sorting
-        if column in [1, 2]:
-            try:
-                self_data = self.data(column, Qt.ItemDataRole.UserRole)
-                other_data = other.data(column, Qt.ItemDataRole.UserRole)
-                
-                if self_data is not None and other_data is not None:
-                    return self_data < other_data
-            except (TypeError, AttributeError):
-                pass
-        
-        # Fall back to text comparison for other columns
-        return super().__lt__(other)
+        try:
+            self_data = self.data(column, Qt.ItemDataRole.UserRole)
+            other_data = other.data(column, Qt.ItemDataRole.UserRole)
+            if self_data is not None and other_data is not None:
+                return self_data < other_data
+        except Exception:
+            pass
+        # Fallback: compare text directly, do NOT call base class (avoids recursion on macOS/PySide6)
+        self_text = self.text(column)
+        other_text = other.text(column)
+        return self_text < other_text
 
 
 class TreeViewWidget(QWidget):
-    """Widget containing the hierarchical tree view of files and folders."""
-    
-    item_selected = pyqtSignal(object)  # FileInfo object
-    selection_cleared = pyqtSignal()    # Emitted when no items are selected
+
+    item_selected = Signal(object)  # FileInfo object
+    selection_cleared = Signal()    # Emitted when no items are selected
     
     def __init__(self, parent=None):
         super().__init__(parent)

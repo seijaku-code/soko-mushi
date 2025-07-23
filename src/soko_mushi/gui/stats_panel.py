@@ -1,42 +1,41 @@
+
 """
-Statistics panel component for displaying file and folder statistics using PyQt6.
+Statistics panel component for displaying file and folder statistics using PySide6.
 """
 
 from typing import Optional, Dict, Any
 from datetime import datetime
 
-from PyQt6.QtWidgets import (
+
+from PySide6.QtWidgets import (
     QWidget, QVBoxLayout, QLabel, QTabWidget, QTreeWidget, QTreeWidgetItem,
     QScrollArea, QFrame, QHBoxLayout
 )
-from PyQt6.QtCore import Qt
+from PySide6.QtCore import Qt
+
 
 from ..core import FileInfo, DiskAnalyzer
 
 
 class NumericTreeWidgetItem(QTreeWidgetItem):
     """QTreeWidgetItem with proper numeric sorting support."""
-    
+
     def __lt__(self, other):
-        """Custom comparison for sorting."""
         column = self.treeWidget().sortColumn()
-        
-        # Use numeric sorting for columns that have numeric UserRole data
         try:
             self_data = self.data(column, Qt.ItemDataRole.UserRole)
             other_data = other.data(column, Qt.ItemDataRole.UserRole)
-            
             if self_data is not None and other_data is not None:
                 return self_data < other_data
-        except (TypeError, AttributeError):
+        except Exception:
             pass
-        
-        # Fall back to text comparison
-        return super().__lt__(other)
+        # Fallback: compare text directly, do NOT call base class (avoids recursion on macOS/PySide6)
+        self_text = self.text(column)
+        other_text = other.text(column)
+        return self_text < other_text
 
 
 class StatsWidget(QWidget):
-    """Panel showing statistics about the current scan or selection."""
     
     def __init__(self, parent=None):
         super().__init__(parent)
