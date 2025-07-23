@@ -43,7 +43,7 @@ def build_executable():
     if platform == 'windows':
         cmd.extend([
             '--windows-console-mode=disable',
-            '--windows-icon-from-ico=assets/icon.ico' if Path('assets/icon.ico').exists() else ''
+            '--windows-icon-from-ico=../assets/icon.ico' if Path('../assets/icon.ico').exists() else ''
         ])
     
         # Add Mac-specific options
@@ -51,7 +51,7 @@ def build_executable():
         cmd.extend([
             '--static-libpython=no',
             '--mode=app',
-            '--macos-app-icon=assets/icon.icns' if Path('assets/icon.icns').exists() else ''
+            '--macos-app-icon=../assets/icon.icns' if Path('assets/icon.icns').exists() else ''
         ])
 
     # Remove empty arguments
