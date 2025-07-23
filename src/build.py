@@ -50,7 +50,8 @@ def build_executable():
     if platform == 'macos':
         cmd.extend([
             '--static-libpython=no',
-            '--mode=app'
+            '--mode=app',
+            '--macos-app-icon=assets/icon.icns' if Path('assets/icon.icns').exists() else ''
         ])
 
     # Remove empty arguments
@@ -72,12 +73,23 @@ def build_executable():
         print("\n✅ Build completed successfully!")
         
         # Show output location
-        exe_path = Path('dist') / f"soko-mushi{exe_extension}"
-        if exe_path.exists():
-            print(f"📦 Executable created: {exe_path.absolute()}")
-            print(f"📏 File size: {exe_path.stat().st_size / 1024 / 1024:.1f} MB")
+        if platform == 'macos':
+            # Nuitka --mode=app creates a .app bundle
+            app_bundle = Path('dist') / 'main.app'
+            binary_path = app_bundle / 'Contents' / 'MacOS' / 'soko-mushi'
+            if app_bundle.exists() and binary_path.exists():
+                print(f"\U0001F4E6 .app bundle created: {app_bundle.absolute()}")
+                print(f"\U0001F4E6 Executable inside bundle: {binary_path.absolute()}")
+                print(f"\U0001F4CF File size: {binary_path.stat().st_size / 1024 / 1024:.1f} MB")
+            else:
+                print("\u274C .app bundle or executable not found in expected location")
         else:
-            print("❌ Executable not found in expected location")
+            exe_path = Path('dist') / f"soko-mushi{exe_extension}"
+            if exe_path.exists():
+                print(f"\U0001F4E6 Executable created: {exe_path.absolute()}")
+                print(f"\U0001F4CF File size: {exe_path.stat().st_size / 1024 / 1024:.1f} MB")
+            else:
+                print("\u274C Executable not found in expected location")
             
     except subprocess.CalledProcessError as e:
         print(f"❌ Build failed with exit code {e.returncode}")
