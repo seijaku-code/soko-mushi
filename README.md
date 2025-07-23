@@ -18,11 +18,6 @@ A powerful, cross-platform disk analysis tool with a modern TreeSize-style inter
 - **Cross-platform** - Windows, Mac, and Linux support
 - **No registration** - Download and run immediately
 
-### ❌ Limitations (Free Edition)
-- No remote/network scanning
-- No centralized dashboard
-- No historical tracking
-- Basic export formats only
 
 ## � Support the Project
 
