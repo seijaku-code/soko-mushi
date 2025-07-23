@@ -30,7 +30,6 @@ def build_executable():
         '--standalone',
         '--onefile',
         '--enable-plugin=pyside6',
-        '--windows-console-mode=disable' if platform == 'windows' else '--enable-console',
         '--output-filename=soko-mushi' + exe_extension,
         '--output-dir=dist',
 #        '--include-data-dir=src/soko_mushi=soko_mushi',
@@ -44,6 +43,7 @@ def build_executable():
     # Add Windows-specific options
     if platform == 'windows':
         cmd.extend([
+            '--windows-console-mode=disable',
             '--windows-icon-from-ico=assets/icon.ico' if Path('assets/icon.ico').exists() else ''
         ])
     
@@ -51,6 +51,7 @@ def build_executable():
     if platform == 'macos':
         cmd.extend([
             '--static-libpython=no',
+            '--mode=app'
         ])
 
     # Remove empty arguments
