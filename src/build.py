@@ -30,7 +30,7 @@ def build_executable():
         '--standalone',
         '--onefile',
         '--enable-plugin=pyside6',
-        '--disable-console' if platform == 'windows' else '--enable-console',
+        '--windows-console-mode=disable' if platform == 'windows' else '--enable-console',
         '--output-filename=soko-mushi' + exe_extension,
         '--output-dir=dist',
 #        '--include-data-dir=src/soko_mushi=soko_mushi',
@@ -38,16 +38,21 @@ def build_executable():
         '--product-version=1.0.0',
         '--file-description=Local Disk Analysis Tool',
         '--copyright=Seijaku',
-        'src/soko_mushi/main.py'
+        'soko_mushi/main.py'
     ]
     
     # Add Windows-specific options
     if platform == 'windows':
         cmd.extend([
-            '--windows-console-mode=disable',
             '--windows-icon-from-ico=assets/icon.ico' if Path('assets/icon.ico').exists() else ''
         ])
     
+        # Add Mac-specific options
+    if platform == 'macos':
+        cmd.extend([
+            '--static-libpython=no',
+        ])
+
     # Remove empty arguments
     cmd = [arg for arg in cmd if arg]
     
