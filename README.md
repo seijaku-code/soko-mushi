@@ -9,24 +9,6 @@ A powerful, cross-platform disk analysis tool with a modern TreeSize-style inter
 
 ## ✨ Features
 
-## ⚠️ macOS Gatekeeper & Unsigned App Note
-
-Soko-Mushi is a free and open source tool. Apple requires a paid Developer ID to sign and notarize macOS apps. This means the app is unsigned, and you may see a warning like "Soko-Mushi.app is damaged and can't be opened" or "cannot be opened because it is from an unidentified developer."
-
-To run the app:
-
-1. Open Terminal.
-2. Run the following command (replace the path if needed):
-   ```sh
-   xattr -dr com.apple.quarantine /Applications/Soko-Mushi.app
-   ```
-3. You can now open the app normally.
-
-Alternatively, right-click the app and choose "Open" to bypass the warning for unsigned apps.
-
-This is a standard macOS security feature for all unsigned apps. Paid signing is not feasible for all open source projects, but the app is safe and open source.
-
-
 ### ✅ Included in Free Edition
 - **Local disk analysis** - Scan any folder or drive on your system
 - **Visual tree view** - Hierarchical folder structure with sizes
@@ -52,6 +34,23 @@ Your support helps keep this project alive and enables new features!
 1. Go to [Releases](https://github.com/seijaku-code/soko-mushi/releases)
 2. Download the executable for your platform
 3. Run the application directly (no installation required)
+
+## ⚠️ macOS Gatekeeper & Unsigned App Note
+
+Soko-Mushi is a free and open source tool. Apple requires a paid Developer ID to sign and notarize macOS apps. This means the app is unsigned, and you may see a warning like "Soko-Mushi.app is damaged and can't be opened" or "cannot be opened because it is from an unidentified developer."
+
+To run the app:
+
+1. Open Terminal.
+2. Run the following command (replace the path if needed):
+   ```sh
+   xattr -dr com.apple.quarantine /Applications/Soko-Mushi.app
+   ```
+3. You can now open the app normally.
+
+Alternatively, right-click the app and choose "Open" to bypass the warning for unsigned apps.
+
+This is a standard macOS security feature for all unsigned apps. Paid signing is not feasible for all open source projects, but the app is safe and open source.
 
 ### Option 2: Run from Source
 ```bash
