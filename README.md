@@ -14,7 +14,7 @@ A powerful, cross-platform disk analysis tool with a modern TreeSize-style inter
 - **Top largest files/folders** - Quick identification of space consumers
 - **File type breakdown** - Group and analyze files by extensions
 - **Export reports** - JSON and CSV formats for further analysis
-- **Modern Qt interface** - Professional, native-looking GUI
+- **Modern Qt interface** - Professional, native-looking GUI (now using PySide6)
 - **Cross-platform** - Windows, Mac, and Linux support
 - **No registration** - Download and run immediately
 
@@ -89,28 +89,30 @@ soko-mushi
 # Install Nuitka
 pip install nuitka
 
-# Build executable
+# Build executable (cross-platform)
+cd src
 python build.py
 
-# The executable will be in the 'dist' directory
+# The executable or app bundle will be in the 'dist' directory
 ```
 
-### Platform-Specific Build Commands
+### Platform-Specific Build Details
 
 #### Windows
-```bash
-python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --disable-console --output-filename=soko-mushi.exe src/soko_mushi/main.py
-```
+- Produces a standalone `.exe` with icon and metadata.
+- No installation required.
 
 #### macOS
-```bash
-python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --output-filename=soko-mushi src/soko_mushi/main.py
-```
+- Produces a `.app` bundle with correct icon and Info.plist.
+- To create a DMG for distribution, use:
+  ```bash
+  npm install -g create-dmg
+  create-dmg dist/main.app
+  # or if renamed: create-dmg dist/soko-mushi.app
+  ```
 
 #### Linux
-```bash
-python -m nuitka --standalone --onefile --enable-plugin=pyqt6 --output-filename=soko-mushi src/soko_mushi/main.py
-```
+- Produces a standalone binary. Ensure execute permissions with `chmod +x` if needed.
 
 ## 📊 Usage
 
@@ -190,7 +192,7 @@ Soko-Mushi supports multiple visual themes:
 #### GUI Appears Blank or Corrupted
 - Update your graphics drivers
 - Try different themes (System/Light/Dark)
-- Ensure you have PyQt6 properly installed: `pip install PyQt6`
+- Ensure you have PySide6 properly installed: `pip install PySide6`
 - On Linux, install Qt6 system packages if needed
 
 #### Executable Won't Start
@@ -224,7 +226,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ##  Acknowledgments
 
-- Built with [PyQt6](https://www.riverbankcomputing.com/software/pyqt/) for modern GUI
+- Built with [PySide6](https://wiki.qt.io/Qt_for_Python) for modern GUI
 - Compiled with [Nuitka](https://nuitka.net/) for performance
 - Inspired by [TreeSize](https://www.jam-software.com/treesize) and similar tools
 
