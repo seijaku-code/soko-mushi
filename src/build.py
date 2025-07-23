@@ -27,8 +27,7 @@ def build_executable():
     # Build command
     cmd = [
         sys.executable, '-m', 'nuitka',
-        '--standalone',
-        '--onefile',
+        '--mode=app',
         '--enable-plugin=pyside6',
         '--output-filename=soko-mushi' + exe_extension,
         '--output-dir=dist',
